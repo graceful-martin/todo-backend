@@ -6,7 +6,7 @@
 - 커밋 시 템플릿 파일이 vi 편집기로 열리게 되면, 공백란에 형식을 맞춰 작성하여 `wq!`로 저장할 시 커밋이 수행됩니다.
 
 ```bash
-git config --global commit.template <프로젝트 디렉터리>.gitmessage.txt
+$ git config --global commit.template <프로젝트 디렉터리>/.gitmessage.txt
 ```
 
 ### 백엔드 코드 실행
