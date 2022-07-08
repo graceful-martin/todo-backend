@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,4 +29,22 @@ public class TodoService {
 		return savedEntity.getTitle();
 	}
 	
+	public List<TodoEntity> create(final TodoEntity entity) {
+		// Validations 크기가 커지면 TodoValidator.java로 분리할 수 있음
+		if (entity == null) {
+			log.warn("Entity cannot be null.");
+			throw new RuntimeException("Entity cannot be null.");
+		}
+		
+		if (entity.getUserId() == null) {
+			log.warn("Unknown user.");
+			throw new RuntimeException("Unknown user.");
+		}
+		
+		repository.save(entity);
+		
+		log.info("Entity Id : {} is saved", entity.getId());
+		
+		return repository.findByUserId(entity.getUserId());
+	}
 }
