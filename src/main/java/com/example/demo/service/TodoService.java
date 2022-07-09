@@ -38,6 +38,11 @@ public class TodoService {
 		return repository.findByUserId(entity.getUserId());
 	}
 	
+	public List<TodoEntity> retrieve(final String userId) {
+		log.info("User Id : {} has founded", userId);
+		return repository.findByUserId(userId);
+	}
+	
 	private void validate(final TodoEntity entity) {
 		// Validations 크기가 커지면 TodoValidator.java로 분리할 수 있음
 		if (entity == null) {
